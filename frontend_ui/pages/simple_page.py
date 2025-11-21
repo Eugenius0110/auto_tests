@@ -1,9 +1,12 @@
 
 import pytest
+import os
 from playwright.sync_api import Page, expect
+from dotenv import load_dotenv
+load_dotenv()
 
+BASE_URL = f"{os.getenv('BASE_URL')}"
 
-URL = 'https://daily-rent-of-housing-fontend-react.vercel.app/'
 BUTTON_ENTER = '.sc-87b832e2-0.daFWkx'
 BUTTON_ENTER_RESULT = 'Войти'
 
@@ -15,7 +18,7 @@ class SimplePage:
         self.page = page
 
     def open(self):
-        self.page.goto(URL)
+        self.page.goto(BASE_URL)
 
     def check_button_enter_exists(self):
         button = self.page.locator(BUTTON_ENTER)
