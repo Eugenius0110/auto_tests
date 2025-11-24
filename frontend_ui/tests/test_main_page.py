@@ -1,7 +1,8 @@
 
 import sys
 import os
-from playwright.sync_api import Page, expect
+import pytest
+from playwright.sync_api import Page
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 
@@ -11,14 +12,26 @@ from playwright.sync_api import sync_playwright
 # from pages.simple_page import SimplePage
 
 from pages.main_page import MainPage
-from elements.locators import MainPageLocators
+from elements.selectors import MainPageSelectors
 
 
-def test_button_enter_exists(page: Page):
+@pytest.mark.ui
+@pytest.mark.smoke
+@pytest.mark.parametrize('element_dict',
+                         [MainPageSelectors.button_enter]
+                         )
+def test_button_enter_exists(page: Page, element_dict):
     main_page = MainPage(page)
     main_page.open()
-    main_page.check_element_visible(MainPageLocators.button_enter['selector'], MainPageLocators.button_enter['description'] )
-    #main_page.check_element_attached()
+    main_page.check_element_attached(element_dict)
+    main_page.check_element_visible(element_dict)
+    main_page.check_element_enabled(element_dict)
+
+    main_page.check_element_has_text(element_dict, 'Войти')
+
+
+
+
 
 # def test_simple_click(page: Page):
 #     simple_page = SimplePage(page)
