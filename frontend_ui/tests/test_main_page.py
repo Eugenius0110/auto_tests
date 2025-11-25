@@ -26,8 +26,10 @@ def test_button_enter_exists(page: Page, element_dict):
     main_page.check_element_attached(element_dict)
     main_page.check_element_visible(element_dict)
     main_page.check_element_enabled(element_dict)
+    main_page.check_element_has_text(element_dict)
+    main_page.check_element_focus(element_dict)
 
-    main_page.check_element_has_text(element_dict, 'Войти')
+
 
 
 

@@ -18,7 +18,7 @@ class MainPageSelectors:
         "selector": "#email_input",
         "role": "textbox",
         "description": "Поле ввода email",
-        "placeholder": "Введите ваш email",
+        "placeholder": "Введите email",
         "type": "email",
         "required": True
     }
