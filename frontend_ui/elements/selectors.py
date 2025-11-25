@@ -2,9 +2,15 @@
 class MainPageSelectors:
 
     # header selectors
-    logo = {
-        "selector": "#id_logo",
-        "description": "Логотип"
+    button_logo = {
+        "selector": ".max-w-[80px].md:max-w-[140px]",
+        "description": "Кнопка logo"
+    }
+
+    button_favorite = {
+        "selector": "",
+        "description": "Кнопка favorite"
+
     }
 
     button_enter = {
