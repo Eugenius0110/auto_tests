@@ -1,4 +1,3 @@
-from tkinter.font import names
 
 from playwright.sync_api import Page, expect, Locator
 #from playwright.async_api import Page
@@ -13,7 +12,7 @@ class BasePage:
     async def open(self):
         self.page.goto(self.url)
 
-    async def get_locator(self, element_dict: dict) -> Locator:
+    def get_locator(self, element_dict: dict) -> Locator:
         if element_dict.get('role') and element_dict.get('text'):
             element = self.page.get_by_role(element_dict.get('role'), name=element_dict.get('text'))
         else:
@@ -55,3 +54,6 @@ class BasePage:
         element = self.get_locator(element_dict)
         element.click()
         print(f"{element_dict.get('description')} clickable")
+
+    def check_test(self):
+        pass
