@@ -20,24 +20,11 @@ from elements.selectors import MainPageSelectors
 @pytest.mark.parametrize('element_dict',
                          [MainPageSelectors.button_enter]
                          )
-def test_button_enter_exists(page: Page, element_dict):
-    main_page = MainPage(page)
-    main_page.open()
+def test_button_enter_exists(main_page: MainPage, element_dict):
     main_page.check_element_attached(element_dict)
     main_page.check_element_visible(element_dict)
     main_page.check_element_enabled(element_dict)
     main_page.check_element_has_text(element_dict)
     main_page.check_element_focus(element_dict)
 
-
-
-
-
-
-
-# def test_simple_click(page: Page):
-#     simple_page = SimplePage(page)
-#     simple_page.open()
-#     simple_page.click_button()
-#     simple_page.check_result_text_is_('Submitted')
 

@@ -15,6 +15,7 @@ class BasePage:
     def get_locator(self, element_dict: dict) -> Locator:
         if element_dict.get('role') and element_dict.get('text'):
             element = self.page.get_by_role(element_dict.get('role'), name=element_dict.get('text'))
+
         else:
             element = self.page.locator(element_dict.get('selector'))
         return element
