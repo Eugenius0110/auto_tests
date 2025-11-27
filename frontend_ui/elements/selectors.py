@@ -23,7 +23,7 @@ class MainPageSelectors:
         "text": "Войти"
     }
 
-    email_field = {
+    login_email_field = {
         "selector": "#email_input",
         "data-testid": "logo",
         "role": "textbox",
@@ -33,7 +33,7 @@ class MainPageSelectors:
         "required": True
     }
 
-    password_field = {
+    login_password_field = {
         "selector": "#password_input",
         "role": "textbox",
         "description": "Поле ввода пароля",

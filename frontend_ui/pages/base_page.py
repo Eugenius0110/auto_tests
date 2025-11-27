@@ -13,12 +13,17 @@ class BasePage:
         self.page.goto(self.url)
 
     def get_locator(self, element_dict: dict) -> Locator:
-        if element_dict.get('role') and element_dict.get('text'):
-            element = self.page.get_by_role(element_dict.get('role'), name=element_dict.get('text'))
-
+        element = self.page.get_by_test_id(element_dict.get('data-testid'))
+        if element_dict.get('data-testid'):
+            element = self.page.get_by_test_id(element_dict.get('data-testid'))
         else:
             element = self.page.locator(element_dict.get('selector'))
         return element
+
+    def element_click(self, element_dict: dict):
+        element = self.get_locator(element_dict)
+        element.click()
+        print(f"{element_dict.get('description')} clickable")
 
     def check_element_attached(self, element_dict: dict): # проверяем, что элемент прикреплен к DOM
         element = self.get_locator(element_dict)

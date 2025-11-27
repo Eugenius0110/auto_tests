@@ -15,16 +15,16 @@ from pages.main_page import MainPage
 from elements.selectors import MainPageSelectors
 
 
-@pytest.mark.ui
-@pytest.mark.smoke
-@pytest.mark.parametrize('element_dict',
-                         [MainPageSelectors.button_enter]
-                         )
-def test_button_enter_exists(main_page: MainPage, element_dict):
-    main_page.check_element_attached(element_dict)
-    main_page.check_element_visible(element_dict)
-    main_page.check_element_enabled(element_dict)
-    main_page.check_element_has_text(element_dict)
-    main_page.check_element_focus(element_dict)
+# @pytest.mark.ui
+# @pytest.mark.smoke
+# @pytest.mark.parametrize('element_dict',
+#                          [MainPageSelectors.button_enter]
+#                          )
+def test_button_enter_exists(main_page: MainPage):
+    main_page.check_element_attached(MainPageSelectors.button_enter)
+    main_page.check_element_visible(MainPageSelectors.button_enter)
+    main_page.check_element_enabled(MainPageSelectors.button_enter)
+    main_page.check_element_has_text(MainPageSelectors.button_enter)
+    main_page.check_element_focus(MainPageSelectors.button_enter)
 
 
