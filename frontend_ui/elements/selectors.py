@@ -3,6 +3,7 @@ class MainPageSelectors:
 
     # header selectors
     button_logo = {
+        "test-id": "logo",
         "selector": ".max-w-[80px].md:max-w-[140px]",
         "description": "Кнопка logo"
     }
