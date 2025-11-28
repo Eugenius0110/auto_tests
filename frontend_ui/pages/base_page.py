@@ -1,6 +1,9 @@
 
+
+import logging
 from playwright.sync_api import Page, expect, Locator
 #from playwright.async_api import Page, expect, Locator
+from utils.logger import logger
 
 
 class BasePage:
@@ -8,6 +11,9 @@ class BasePage:
     url = None
     def __init__(self, page: Page):
         self.page = page
+        self.logger = logger.getChild(self.__class__.__name__)
+        self.logger.info(f"Инициализована страница")
+
 
     def get_locator(self, element_dict: dict) -> Locator:
         element = self.page.get_by_role("button", name="Войти")
@@ -23,19 +29,23 @@ class BasePage:
         print(f"{element_dict.get('description')} clickable")
 
     def check_element_attached(self, element_dict: dict): # проверяем, что элемент прикреплен к DOM
+        self.logger.info(f"Проверка attached")
         element = self.get_locator(element_dict)
         expect(element).to_be_attached()
-        print(f"{element_dict.get('description')} attached DOM")
+        self.logger.info(f"Элемент attached DOM: {element_dict.get('description')}")
 
     def check_element_visible(self, element_dict: dict): # проверяем, что элемент видим
+        self.logger.info(f"Проверка visible")
         element = self.get_locator(element_dict)
         expect(element).to_be_visible()
-        print(f"{element_dict.get('description')} visible")
+        self.logger.info(f"Элемент visible: {element_dict.get('description')}")
 
     def check_element_enabled(self, element_dict: dict): # проверяем, что элемент доступен
+        self.logger.info(f"Проверка enable")
         element = self.get_locator(element_dict)
         expect(element).to_be_enabled()
-        print(f"{element_dict.get('description')} enabled")
+        self.logger.info(f"Элемент enabled: {element_dict.get('description')}")
+
 
     def check_element_has_text(self, element_dict: dict): # проверяем, что элемент содержит текст
         element = self.get_locator(element_dict)
