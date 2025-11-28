@@ -1,10 +1,13 @@
 
 import sys
 import os
+from time import sleep
+
 import pytest
 from playwright.sync_api import Page
 from pathlib import Path
 from playwright.sync_api import sync_playwright
+from playwright.async_api import async_playwright
 
 # current_dir = Path(__file__).parent
 # frontend_root = current_dir.parent
@@ -13,6 +16,7 @@ from playwright.sync_api import sync_playwright
 
 from pages.main_page import MainPage
 from elements.selectors import MainPageSelectors
+
 
 
 # @pytest.mark.ui
@@ -26,5 +30,7 @@ def test_button_enter_exists(main_page: MainPage):
     main_page.check_element_enabled(MainPageSelectors.button_enter)
     main_page.check_element_has_text(MainPageSelectors.button_enter)
     main_page.check_element_focus(MainPageSelectors.button_enter)
+    main_page.element_click(MainPageSelectors.button_enter)
+
 
 

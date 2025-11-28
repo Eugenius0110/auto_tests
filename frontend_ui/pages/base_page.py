@@ -1,6 +1,6 @@
 
 from playwright.sync_api import Page, expect, Locator
-#from playwright.async_api import Page
+#from playwright.async_api import Page, expect, Locator
 
 
 class BasePage:
@@ -9,15 +9,12 @@ class BasePage:
     def __init__(self, page: Page):
         self.page = page
 
-    async def open(self):
-        self.page.goto(self.url)
-
     def get_locator(self, element_dict: dict) -> Locator:
-        element = self.page.get_by_test_id(element_dict.get('data-testid'))
-        if element_dict.get('data-testid'):
-            element = self.page.get_by_test_id(element_dict.get('data-testid'))
-        else:
-            element = self.page.locator(element_dict.get('selector'))
+        element = self.page.get_by_role("button", name="Войти")
+        # if element_dict.get('data-testid'):
+        #     element = self.page.get_by_test_id(element_dict.get('data-testid'))
+        # else:
+        #     element = self.page.locator(element_dict.get('selector'))
         return element
 
     def element_click(self, element_dict: dict):
@@ -45,7 +42,7 @@ class BasePage:
         expect(element).to_have_text(element_dict.get('text'))
         print(f"{element_dict.get('description')} has text: {element_dict.get('text')}")
 
-    def check_element_editable(self, element_dict: dict): # проверяем, что элемент редактируемый
+    async def check_element_editable(self, element_dict: dict): # проверяем, что элемент редактируемый
         element = self.get_locator(element_dict)
         expect(element).to_be_editable()
         print(f"{element_dict.get('description')} editable")

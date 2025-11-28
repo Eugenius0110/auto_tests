@@ -9,14 +9,14 @@ class MainPageSelectors:
     }
 
     button_favorite = {
-        "data-testid": "logo",
+        "data-testid": "button-enter",
         "selector": "",
         "description": "Кнопка favorite"
 
     }
 
     button_enter = {
-        "data-testid": "logo",
+        "data-testid": "button",
         "selector": "#id_button",
         "role": "button",
         "description": "Кнопка 'Войти'",
